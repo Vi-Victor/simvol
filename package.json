@@ -1,0 +1,11 @@
+{
+	"name": "simvol",
+	"version": "1.0.0",
+	"description": "mega-minimal web-based chat",
+	"author": "Vi - Victor Ivanov",
+	"license": "MIT",
+	"dependencies": {
+		"express": "4.10.2",
+		"socket.io": "1.2.0"
+	}
+}
