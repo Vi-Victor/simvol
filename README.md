@@ -5,7 +5,7 @@ _simvol_ is a mega-minimal web-based chat developed for simple communication, an
 
 ### Installation
 Currently not made for modular implementation.
-Can easily be used as standalone product if all dependencies are installed, though.
+Can be used as standalone product, just make sure to install all dependancies.
 
 ### Dependancies
 _simvol_ runs on NodeJS, and has the following dependencies:
