@@ -16,6 +16,7 @@ _simvol_ runs on NodeJS, and has the following dependencies:
 ## To Do
  - Make chat system into easy-to-implement module
  - Additional anti-spam safeguards
+ - Additional UI for scrolling and message submit
  - Live demo page
 
 ## Notes
