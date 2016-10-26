@@ -1,4 +1,5 @@
 # simvol
+#### Version 1.0
 _simvol_ is a mega-minimal web-based chat.
 It was developed for simple communication, and acts as a solid foundation for more complex chat-based projects.
 
@@ -18,9 +19,3 @@ _simvol_ runs on NodeJS, and has the following dependencies:
  - Additional anti-spam safeguards
  - Additional UI for scrolling and message submit
  - Live demo page
-
-## Notes
-
-Version 1.0.0
-
-Last updated October 14th, 2016
