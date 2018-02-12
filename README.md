@@ -9,6 +9,5 @@ Hosted [here](https://simvol.herokuapp.com/).
 ## Dependancies
 
 _simvol_ runs on NodeJS, and has the following dependencies:
-  - jQuery
   - ExpressJS
   - socket.io

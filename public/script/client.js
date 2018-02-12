@@ -1,39 +1,68 @@
-// set default username to random number
+//set default username to random number
 var username = (Math.floor(Math.random() * (10000 - 1000 + 1)) + 1000).toString();
 var socket = io();
+var chatting = false;
 
-// on event 'chat message' (sent by server), display message, and auto-scroll to bottom of messages in chat
+//on event 'chat message', display message, and auto-scroll to bottom of messages in chat
 socket.on('chat message', function(msg) {
-	$('#messages').append($('<li class="user">').text(msg.user));
-	$('#messages').append($('<li class="single-message">').text(msg.message));
+	var mes = document.getElementById('messages');
+
+	var name = document.createElement('li');
+	name.className = 'user';
+	var nameText = document.createTextNode(msg.user);
+	name.appendChild(nameText);
+	mes.appendChild(name);
+
+	var text = document.createElement('li');
+	text.className = 'single-message';
+	var textText = document.createTextNode(msg.message);
+	text.appendChild(textText);
+	mes.appendChild(text);
+
 	document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight;
 });
 
-// load login into html using AJAX
-$('#main-body').load('../page/login.html');
+//on 'user change', update user count
+socket.on('user change', function(num) {
+	if (chatting) document.getElementById('user-count').innerHTML = "Online: " + num;
+});
 
-// called when login input is submitted
+//load login page
+load('../page/login.html', document.getElementById('main-body'));
+
+//when login input is submitted
 function changepage() {
 
-	// set username
-	if ($('#login-input').val() != '') {
-		username = $('#login-input').val();
+	//set username
+	if (document.getElementById('login-input').value != '') {
+		username = document.getElementById('login-input').value;
 	}
 
-	// load chat into html using AJAX
-	$('#main-body').load('../page/chat.html');
+	//load chat
+	load('../page/chat.html', document.getElementById('main-body'));
+	chatting = true;
 
 	return false;
 }
 
-// called when chat input is submitted
+//when chat input is submitted
 function type() {
 
-	// create message and emit event
-	if ($('#m').val() != '') {
-		socket.emit('chat message', {user:username, message:$('#m').val()});
+	//create message and emit event
+	if (document.getElementById('m').value != '') {
+		socket.emit('chat message', {user:username, message:document.getElementById('m').value});
 	}
-	$('#m').val('');
+	document.getElementById('m').value = '';
 
 	return false;
+}
+
+//load external html into element
+function load(url, element) {
+    req = new XMLHttpRequest();
+    req.open("GET", url);
+    req.send();
+    req.addEventListener("load", function () {
+    	element.innerHTML = req.responseText; 
+    });
 }

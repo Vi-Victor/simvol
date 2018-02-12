@@ -6,25 +6,40 @@ var io = require('socket.io')(http);
 var port = process.env.PORT || 3000;
 var IP = process.env.IP || '0.0.0.0';
 
-// set Express port
 server.set('port', port);
 
-// set 'public' as static directory
+//set public directory
 server.use(express.static(path.join(__dirname, '/public')));
 
-// load login (index.html)
+var userCount = 0;
+
+//get index.html
 server.get('/', function(req, res) {
 	res.sendFile(path.join(__dirname + '/public/page/index.html'));
 });
 
-// on 'chat message', get message and emit to all clients
 io.on('connection', function(socket) {
+	//on user connection, emit user count to all clients
+	userCount++;
+
+	//on chat message, emit message to all clients
 	socket.on('chat message', function(msg) {
 		io.emit('chat message', msg);
 	});
+
+	//on user disconnection, emit user count to all clients
+	socket.on('disconnect', function() {
+		userCount--;
+	});
+
+	setInterval(updateUsers, 1000);
 });
 
-// listen on port and output logs
+function updateUsers() {
+	io.emit('user change', userCount);
+}
+
+//listen on port
 http.listen(port, IP, function() {
 	console.log('listening on port ' + port);
 	console.log('simvol CHAT')

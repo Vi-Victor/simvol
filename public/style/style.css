@@ -103,25 +103,31 @@ body {
 }
 
 #typeform,
-#m {
+#m,
+#user-count {
+	background-color: #000;
+	color: #fff;
+	font-size: 16px;
+}
+
+#typeform {
 	display: block;
 	position: relative;
 	bottom: 0%;
 	width: 100%;
-	border: none;
-	font-size: 16px;
-	background-color: #000;
-	color: #fff;
-}
-
-#typeform {
 	padding: 20px;
 	height: 10%;
 }
 
 #m {
 	display: inline;
-	width: 90%;
+	width: 80%;
+	border: none;
+}
+
+#user-count {
+	position: relative;
+	float: right;
 }
 
 .user {
