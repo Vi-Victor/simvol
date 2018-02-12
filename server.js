@@ -27,5 +27,5 @@ io.on('connection', function(socket) {
 // listen on port and output logs
 http.listen(port, IP, function() {
 	console.log('listening on port ' + port);
-	console.log('simvol CHAT, version 1.0.0, by Vi - Victor Ivanov')
+	console.log('simvol CHAT')
 });

@@ -4,7 +4,8 @@ var socket = io();
 
 // on event 'chat message' (sent by server), display message, and auto-scroll to bottom of messages in chat
 socket.on('chat message', function(msg) {
-	$('#messages').append($('<li>').text(msg));
+	$('#messages').append($('<li class="user">').text(msg.user));
+	$('#messages').append($('<li class="single-message">').text(msg.message));
 	document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight;
 });
 
@@ -30,7 +31,7 @@ function type() {
 
 	// create message and emit event
 	if ($('#m').val() != '') {
-		socket.emit('chat message', (username + ": " + $('#m').val()));
+		socket.emit('chat message', {user:username, message:$('#m').val()});
 	}
 	$('#m').val('');
 

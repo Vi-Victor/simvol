@@ -72,7 +72,6 @@ body {
 	height: 90%;
 	top: 0;
 	padding: 20px;
-	padding-top: 0px;
 	overflow-x: hidden;
 	overflow-y: auto;
 	background-color: #fff;
@@ -91,7 +90,6 @@ body {
 
 #messages li {
 	font-size: 16px;
-	padding-top: 12px;
 	word-wrap: break-word;
 }
 
@@ -124,6 +122,15 @@ body {
 #m {
 	display: inline;
 	width: 90%;
+}
+
+.user {
+	font-weight: 700;
+	margin-bottom: 2px;
+}
+
+.single-message {
+	margin-bottom: 10px;
 }
 
 /* background */
